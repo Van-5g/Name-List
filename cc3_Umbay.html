@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Name List</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+  }
+  th, td {
+    border: 2px solid #667bc0;
+    text-align: left;
+    padding: 10px;
+  }
+  th {
+    background-color: #bdd2ff;
+  }
+</style>
+</head>
+<body>
+
+<h1>Name List</h1>
+<h3>Add names to list:</h3>
+
+<label for="input">Enter Name (First Name, Middle Name, Last Name):</label>
+<input type="text" id="input">
+<button onclick="addName()">Add Name</button>
+
+<table id="ntable">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody id="nlist">
+    
+  </tbody>
+</table>
+
+<script>
+function addName() {
+  var input = document.getElementById('input').value;
+  var insertn = input.split(',');
+  
+  if (insertn.length !== 3) {
+    alert("Please enter the name in the format: First Name, Middle Name, Last Name");
+    return;
+  }
+  
+  var firstName = insertn[0].trim();
+  var middleName = insertn[1].trim();
+  var lastName = insertn[2].trim();
+  
+  var table = document.getElementById('nlist');
+  var row = table.insertRow();
+  
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  
+  cell1.innerHTML = firstName;
+  cell2.innerHTML = middleName;
+  cell3.innerHTML = lastName;
+}
+</script>
+
+</body>
+</html>
